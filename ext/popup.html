@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<style>
+  :root { color-scheme: dark; }
+  body {
+    width: 320px; margin: 0; padding: 14px;
+    background: #17181a; color: #e6e6e6;
+    font: 13px/1.6 system-ui, "Microsoft YaHei", sans-serif;
+  }
+  h1 { font-size: 13px; font-weight: 500; margin: 0 0 10px; color: #9ecbff; }
+  label { display: block; font-size: 12px; color: #8b8b8b; margin: 8px 0 3px; }
+  input {
+    width: 100%; box-sizing: border-box; padding: 6px 8px;
+    background: #232427; border: 1px solid #33353a; border-radius: 6px;
+    color: #e6e6e6; font: 12px/1.4 ui-monospace, Consolas, monospace;
+  }
+  input:focus { outline: none; border-color: #3d6fa5; }
+  .row { display: flex; gap: 8px; }
+  .row > div { flex: 1; }
+  button {
+    width: 100%; margin-top: 12px; padding: 8px;
+    background: #2b5f92; border: 0; border-radius: 6px;
+    color: #fff; font: 13px system-ui, sans-serif; cursor: pointer;
+  }
+  button:hover { background: #356fa8; }
+  button:disabled { background: #333; color: #777; cursor: default; }
+  #out { margin-top: 10px; font-size: 12px; color: #9a9a9a; white-space: pre-wrap; word-break: break-all; }
+  .ok { color: #6fd08c !important; }
+  .bad { color: #ef7a7a !important; }
+  .tip { margin-top: 10px; padding-top: 10px; border-top: 1px solid #2a2c30; font-size: 11px; color: #6f7076; }
+</style>
+</head>
+<body>
+  <h1>wing 连接器</h1>
+
+  <div class="row">
+    <div>
+      <label>端口</label>
+      <input id="port" value="7788" inputmode="numeric">
+    </div>
+    <div style="flex:2">
+      <label>令牌（wing serve 打印的那串）</label>
+      <input id="token" placeholder="粘贴令牌">
+    </div>
+  </div>
+
+  <button id="go">读取登录态并发送</button>
+  <div id="out">先在本机跑 <b>wing serve</b>，把打印的令牌填上面。</div>
+
+  <div class="tip">
+    只读取 *.ekwing.com 的 cookie，只发往 127.0.0.1。不会上传到别处，也不会自动执行——每次都要你点这个按钮。
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
